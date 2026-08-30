@@ -16,7 +16,6 @@ func TestHandlerEnabled(t *testing.T) {
 	handler := NewHandler()
 
 	levels := []slog.Level{
-		LevelMin,
 		slog.LevelDebug,
 		slog.LevelInfo,
 		slog.LevelWarn,

@@ -3,21 +3,16 @@ package elevator
 import (
 	"context"
 	"log/slog"
-	"math"
 	"os"
 )
 
 const (
-	// LevelMin is a [slog.Level] set to [math.MinInt]. This is useful for
-	// delegates using [slog.HandlerOptions.Level] by requiring them to always
-	// handle records when the buffer is flushed.
-	LevelMin               slog.Level = math.MinInt
-	defaultInitialCapacity int        = 16
-	defaultFlushLevel      slog.Level = slog.LevelError
+	defaultInitialCapacity = 16
+	defaultFlushLevel      = slog.LevelError
 )
 
 var (
-	defaultDelegate = slog.NewJSONHandler(os.Stdout, &slog.HandlerOptions{Level: LevelMin})
+	defaultDelegate = slog.NewJSONHandler(os.Stdout, nil)
 )
 
 // Handler is a [slog.Handler] that handles all records at all levels by
@@ -112,7 +107,7 @@ func (handler *Handler) WithGroup(name string) slog.Handler {
 //
 // Unless explicitly configured by options, the returned Handler will have the
 // following default behavior:
-//   - Delegate is a [slog.JSONHandler] writing to os.Stdout
+//   - Delegate is a [slog.JSONHandler] writing to [os.Stdout]
 //   - Buffer is unlimited with an initial capacity of 16
 //   - Flush level is set to [slog.LevelError]
 func NewHandler(options ...HandlerOption) *Handler {

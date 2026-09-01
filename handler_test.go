@@ -178,3 +178,18 @@ func TestNewHandlerDefaults(t *testing.T) {
 		t.Fatalf("flushLevel got %v, want %v", state.flushLevel, defaultFlushLevel)
 	}
 }
+
+func TestNewLoggerOptions(t *testing.T) {
+	delegate := &mockHandler{}
+	logger := NewLogger(WithDelegate(delegate))
+
+	rawHandler := logger.Handler()
+	handler, ok := rawHandler.(*Handler)
+	if !ok {
+		t.Fatalf("handler is %T, want *Handler", rawHandler)
+	}
+
+	if handler.delegate != delegate {
+		t.Fatalf("delegate got %v, want %v", handler.delegate, delegate)
+	}
+}

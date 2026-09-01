@@ -131,3 +131,11 @@ func NewHandler(options ...HandlerOption) *Handler {
 
 	return handler
 }
+
+// NewLogger returns a new [slog.Logger] whose handler is [NewHandler]
+// configured with options; it is equivalent to:
+//
+//	slog.New(NewHandler(options...))
+func NewLogger(options ...HandlerOption) *slog.Logger {
+	return slog.New(NewHandler(options...))
+}

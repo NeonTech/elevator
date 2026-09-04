@@ -17,7 +17,7 @@ go get github.com/NeonTech/elevator
 ## Usage
 
 ```go
-logger := slog.New(elevator.NewHandler())
+logger := elevator.NewLogger()
 ```
 
 Full documentation is available on

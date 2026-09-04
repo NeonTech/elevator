@@ -26,7 +26,7 @@ var (
 // This implementation is most useful when used in conjunction with a scoped
 // "id" attribute, for example:
 //
-//	logger := slog.New(elevator.NewHandler())
+//	logger := elevator.NewLogger()
 //	// id is created in a "scope", for example, an HTTP request.
 //	logger = logger.With("id", id)
 //

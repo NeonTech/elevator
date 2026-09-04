@@ -6,8 +6,7 @@ import "log/slog"
 type HandlerOption func(handler *Handler)
 
 // WithDelegate configures the [slog.Handler] that handles records when the
-// buffer is flushed. If the delegate uses [slog.HandlerOptions.Level] then it
-// is recommended to set it to [LevelMin] so all records will be handled.
+// buffer is flushed.
 //
 // If delegate is nil, then a default delegate is configured.
 func WithDelegate(delegate slog.Handler) HandlerOption {

@@ -101,7 +101,7 @@ func (handler *Handler) WithGroup(name string) slog.Handler {
 // With* functions; for example:
 //
 //	elevator.NewHandler(
-//	  elevator.WithBuffer(16),
+//	  elevator.WithLimitedBuffer(16),
 //	  elevator.WithFlushLevel(slog.LevelWarn),
 //	)
 //
@@ -135,7 +135,7 @@ func NewHandler(options ...HandlerOption) *Handler {
 // NewLogger returns a new [slog.Logger] whose handler is [NewHandler]
 // configured with options; it is equivalent to:
 //
-//	slog.New(NewHandler(options...))
+//	slog.New(elevator.NewHandler(options...))
 func NewLogger(options ...HandlerOption) *slog.Logger {
 	return slog.New(NewHandler(options...))
 }

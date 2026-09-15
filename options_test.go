@@ -20,7 +20,7 @@ func TestWithDelegateNonNil(t *testing.T) {
 	}
 }
 
-func TestWithBuffer(t *testing.T) {
+func TestWithLimitedBuffer(t *testing.T) {
 	tests := map[string]struct {
 		capacity     int
 		wantCapacity int
@@ -32,7 +32,7 @@ func TestWithBuffer(t *testing.T) {
 
 	for name, test := range tests {
 		t.Run(name, func(t *testing.T) {
-			handler := NewHandler(WithBuffer(test.capacity))
+			handler := NewHandler(WithLimitedBuffer(test.capacity))
 			state := handler.state
 
 			if state.unlimitedBuffer {

@@ -19,11 +19,11 @@ func WithDelegate(delegate slog.Handler) HandlerOption {
 	}
 }
 
-// WithBuffer configures the buffer to discard the oldest records when it
+// WithLimitedBuffer configures the buffer to discard the oldest records when it
 // reaches capacity.
 //
 // If capacity is less than 1, then a capacity of 1 is configured.
-func WithBuffer(capacity int) HandlerOption {
+func WithLimitedBuffer(capacity int) HandlerOption {
 	if capacity < 1 {
 		capacity = 1
 	}
